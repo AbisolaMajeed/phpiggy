@@ -15,6 +15,6 @@ class UrlRule implements RuleInterface
 
     public function getMessage(array $data, string $field, array $params): string
     {
-        return "Invalid Url";
+        return "Invalid URL";
     }
 }
