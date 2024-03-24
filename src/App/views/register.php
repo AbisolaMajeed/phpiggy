@@ -3,7 +3,7 @@
 <section
   class="max-w-2xl mx-auto mt-12 p-4 bg-white shadow-md border border-gray-200 rounded"
 >
-  <?php var_dump($errors); ?>
+
   <form method='POST' "grid grid-cols-1 gap-6"> 
     <!-- Email -->
     <label class="block">
@@ -13,6 +13,11 @@
         class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
         placeholder="john@example.com"
       />
+      <?php if(array_key_exists('email', $errors)): ?>
+        <div class="bg-gray-100 mt-2 p-2 text-red-500"> 
+          <?php echo e($errors['email'][0]); ?>
+        </div>
+      <?php endif ?>
     </label>
     <!-- Age -->
     <label class="block">
@@ -22,6 +27,11 @@
         class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
         placeholder=""
       />
+      <?php if(array_key_exists('age', $errors)): ?>
+        <div class="bg-gray-100 mt-2 p-2 text-red-500"> 
+          <?php echo e($errors['age'][0]); ?>
+        </div>
+      <?php endif ?>
     </label>
     <!-- Country -->
     <label class="block">
@@ -34,6 +44,11 @@
         <option value="Mexico">Mexico</option>
         <option value="Invalid">Invalid Country</option>
       </select>
+      <?php if(array_key_exists('country', $errors)): ?>
+        <div class="bg-gray-100 mt-2 p-2 text-red-500"> 
+          <?php echo e($errors['country'][0]); ?>
+        </div>
+      <?php endif ?>      
     </label>
     <!-- Social Media URL -->
     <label class="block">
@@ -43,6 +58,11 @@
         class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
         placeholder=""
       />
+      <?php if(array_key_exists('socialMediaURL', $errors)): ?>
+        <div class="bg-gray-100 mt-2 p-2 text-red-500"> 
+          <?php echo e($errors['socialMediaURL'][0]); ?>
+        </div>
+      <?php endif ?>
     </label>
     <!-- Password -->
     <label class="block">
@@ -52,6 +72,11 @@
         class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
         placeholder=""
       />
+      <?php if(array_key_exists('password', $errors)): ?>
+        <div class="bg-gray-100 mt-2 p-2 text-red-500"> 
+          <?php echo e($errors['password'][0]); ?>
+        </div>
+      <?php endif ?>
     </label>
     <!-- Confirm Password -->
     <label class="block">
@@ -61,6 +86,11 @@
         class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
         placeholder=""
       />
+      <?php if(array_key_exists('emconfirmPasswordail', $errors)): ?>
+        <div class="bg-gray-100 mt-2 p-2 text-red-500"> 
+          <?php echo e($errors['confirmPassword'][1]); ?>
+        </div>
+      <?php endif ?>
     </label>
     <!-- Terms of Service -->
     <div class="block">
@@ -73,6 +103,11 @@
             />
             <span class="ml-2">I accept the terms of service.</span>
           </label>
+          <?php if(array_key_exists('tos', $errors)): ?>
+              <div class="bg-gray-100 mt-2 p-2 text-red-500"> 
+                <?php echo e($errors['tos'][0]); ?>
+              </div>
+            <?php endif ?>
         </div>
       </div>
     </div>
