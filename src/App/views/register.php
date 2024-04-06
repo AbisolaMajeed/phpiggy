@@ -9,10 +9,7 @@
     <label class="block">
       <span class="text-gray-700">Email address</span>
       <input
-<<<<<<< HEAD
         value="<?php echo e($oldFormData['email'] ?? ''); ?>"
-=======
->>>>>>> c44efd3eb3585816da7846681161a896b021c45a
         name="email" type="email"
         class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
         placeholder="john@example.com"
@@ -27,10 +24,7 @@
     <label class="block">
       <span class="text-gray-700">Age</span>
       <input
-<<<<<<< HEAD
         value="<?php echo e($oldFormData['age'] ?? ''); ?>"
-=======
->>>>>>> c44efd3eb3585816da7846681161a896b021c45a
         name="age" type="number"
         class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
         placeholder=""
@@ -48,13 +42,8 @@
        name="country" class="block w-full mt-1 rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
       >
         <option value="USA">USA</option>
-<<<<<<< HEAD
         <option value="Canada" <?php echo $oldFormData['country'] === 'Canada' ? 'selected'  : ''; ?>>Canada</option>
         <option value="Mexico" <?php echo $oldFormData['country'] === 'Mexico' ? 'selected'  : ''; ?>> Mexico</option>
-=======
-        <option value="Canada">Canada</option>
-        <option value="Mexico">Mexico</option>
->>>>>>> c44efd3eb3585816da7846681161a896b021c45a
         <option value="Invalid">Invalid Country</option>
       </select>
       <?php if(array_key_exists('country', $errors)): ?>
@@ -67,10 +56,7 @@
     <label class="block">
       <span class="text-gray-700">Social Media URL</span>
       <input
-<<<<<<< HEAD
         value="<?php echo e($oldFormData['socialMediaURL'] ?? ''); ?>"
-=======
->>>>>>> c44efd3eb3585816da7846681161a896b021c45a
         name="socialMediaURL" type="text"
         class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
         placeholder=""
@@ -137,10 +123,6 @@
       Submit
     </button>
   </form>
-<<<<<<< HEAD
-  <?php var_dump($oldFormData); ?>
-=======
->>>>>>> c44efd3eb3585816da7846681161a896b021c45a
 </section>
 
 <?php include $this->resolve("partials/_footer.php"); ?>
