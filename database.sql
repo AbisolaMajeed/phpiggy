@@ -1,5 +1,5 @@
-CREATE TABLE users (
-    id bigint(20) unsinged NOT NULL AUTO_INCREMENT,
+CREATE TABLE IF NOT EXISTS users (
+    id bigint(20) unsigned NOT NULL AUTO_INCREMENT,
     email VARCHAR(255) NOT NULL,
     password VARCHAR(255) NOT NULL,
     age tinyint(3) NOT NULL,
