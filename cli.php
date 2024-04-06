@@ -10,11 +10,14 @@ $db = new Database('mysql',[
     'dbname' => 'phpiggy'
 ], 'root', '');
 
-$search = "Hats' OR 1=1 --'"; //SQL does not process code written inside comment
-$query = "SELECT * FROM products WHERE name = '{$search}'";
+$search = "Hats"; //SQL does not process code written inside comments
+$query = "SELECT * FROM products WHERE name = :name";
 
-echo $query;
-$stmt = $db->connection->query($query, PDO::FETCH_ASSOC);
+$stmt = $db->connection->prepare($query);
+
+$stmt->bindValue('name', $search, PDO::PARAM_STR);
+
+$stmt->execute();
 
 var_dump($stmt->fetchAll(PDO::FETCH_OBJ));
 
