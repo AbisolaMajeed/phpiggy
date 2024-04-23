@@ -70,7 +70,7 @@ class Container
         }
 
         $factory = $this->definitions[$id]; //the array is a factory function
-        $dependency = $factory();
+        $dependency = $factory($this); //allow injectionof depedency manually, instance of a container
 
         $this->resolved[$id] = $dependency;
 
