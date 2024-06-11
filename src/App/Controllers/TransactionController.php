@@ -42,4 +42,27 @@ class TransactionController
       'transaction' => $transaction // the $transaction is passed to prefill the form with values
     ]);
   }
+
+  public function edit(array $params) {
+    $transaction = $this->transactionService->getUserTransaction(
+      $params['transaction']
+    );
+
+    if(!$transaction) {
+      redirectTo('/');
+    }
+
+    $this->validatorService->validateTransaction($_POST);
+
+    $this->transactionService->update($_POST, $transaction['id']);
+
+    redirectTo($_SERVER['HTTP_REFERER']); // to go back to the page that is being edited
+  }
+
+  public function delete(array $params)
+  {
+    $this->transactionService->delete((int) $params['transaction']);
+
+    redirectTo('/');
+  }
 }
