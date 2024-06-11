@@ -27,4 +27,19 @@ class TransactionController
 
     redirectTo('/');
   }
+
+  public function editView(array $params) //the $params comes from the key-value pair created for the route and route parameter in the Router.php
+  {
+    $transaction = $this->transactionService->getUserTransaction(
+      $params['transaction']
+    );
+
+    if(!$transaction) {
+      redirectTo('/');
+    }
+
+    echo $this->view->render('transactions/edit.php', [
+      'transaction' => $transaction // the $transaction is passed to prefill the form with values
+    ]);
+  }
 }
