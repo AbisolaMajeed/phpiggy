@@ -45,7 +45,20 @@ class ReceiptController
   }
 
   public function download(array $params) {
+    $transaction = $this->transactionService->getUserTransaction(
+      $params['transaction']
+    );
 
+    $receipt = $this->receiptService->getReceipt($params['receipt']);
+
+    if(empty($transaction)){
+      redirectTo('/');
+    }
+
+    //prevent user from access to a receipt id from a different transaction
+    if($receipt['transaction_id'] !== $transaction['id']){
+      redirectTo('/');
+    }
   }
 
   public function delete(array $params) {
