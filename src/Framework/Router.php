@@ -8,6 +8,7 @@ class Router
 {
     private array $routes = [];
     private array $middlewares = [];
+    private array $errorHandler;
 
     public function add(string $method, string $path, array $controller)
     {
@@ -74,6 +75,8 @@ class Router
 
             return;
         }
+
+        $this->dispatchNotFound($container);
     }
 
     public function addMiddleware(string $middleware) { //Middleware is defined as classes in order for the container to have access to container to inject dependency
@@ -83,5 +86,27 @@ class Router
     public function addRouteMiddleware(string $middleware) {
         $lastRouteKey = array_key_last($this->routes);
         $this->routes[$lastRouteKey]['middlewares'][]= $middleware;
+    }
+
+    public function setErrorHandler(array $controller) {
+        $this->errorHandler = $controller;
+    }
+
+    public function dispatchNotFound(?Container $container) //? indicates allow null value
+    {
+        [$class, $function] = $this->errorHandler;
+
+        $controllerInstance = $container ? $container->resolve($class) : new $class;
+
+        $action = fn () => $controllerInstance->$function();
+
+        foreach($this->middlewares as $middleware) {
+            $middlewareInstance = $container ? $container->resolve($middleware) : new $middleware;   
+            $action = fn() => $middlewareInstance->process($action);
+        }
+
+        $action();
+        //this method creates an instance of a specific controller whereas
+        //the dispatch method selects a controller based on the route
     }
 }
