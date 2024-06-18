@@ -20,8 +20,6 @@ class Database
         $config = http_build_query( data: $config, arg_separator:';');
 
         $dsn = "{$driver}:{$config}";
-        $username = "root";
-        $password = "";
 
         try {
             $this->connection = new PDO($dsn, $username, $password, [
